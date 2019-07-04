@@ -53,12 +53,21 @@ function tShirtInfo() {
 tShirtInfo();
 
 function activityRegister() {
-	const all = $('input[name="all"]');
+	const activities = $('.activities').children().children();
+	console.log(activities)
+	
+	let total = 0;
+	let totalHTML = $('<label></label>');
 
-	let total = 0; 
-	all.click(function() {
-		console.log(all.prop('checked'));
-	});
+	activities.on('change', function(e) {
+		if (e.target.checked && e.target.name === 'all') {
+			total += 200;
+		} else if (!e.target.checked && e.target.name === 'all') {
+			total -= 200;
+		}
+		totalHTML.text('Total: $' + total);
+		$('.activities').append(totalHTML);
+	})
 }
 
 activityRegister();
