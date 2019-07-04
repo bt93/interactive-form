@@ -52,6 +52,13 @@ function tShirtInfo() {
 
 tShirtInfo();
 
+/*
+ * when activity options are clicked:
+ * Adds or subtracts the from the total.
+ * Disables the checkboxes and puts a strike through
+ * the text of a corresponding checkbox for any events
+ * that confilct with the selected options.
+ */
 function activityRegister() {
 	const activities = $('.activities').children().children();
 
@@ -179,3 +186,4 @@ function activityRegister() {
 }
 
 activityRegister();
+
