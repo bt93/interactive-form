@@ -54,17 +54,125 @@ tShirtInfo();
 
 function activityRegister() {
 	const activities = $('.activities').children().children();
-	console.log(activities)
-	
+
 	let total = 0;
+	let clickCount = 0;
 	let totalHTML = $('<label></label>');
 
 	activities.on('change', function(e) {
+		// Main Conference
 		if (e.target.checked && e.target.name === 'all') {
 			total += 200;
+			clickCount += 1;
+			activities.parent().not('#all').addClass('strike');
+			activities.not('[name="all"]').attr("disabled", true);
 		} else if (!e.target.checked && e.target.name === 'all') {
 			total -= 200;
+			clickCount -= 1;
+			activities.parent().not('#all').removeClass('strike');
+			activities.not('[name="all"]').attr("disabled", false);
 		}
+		// js-frameworks
+		if (e.target.checked && e.target.name === 'js-frameworks') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+			// disable express
+			$('#express').addClass('strike');
+			$('[name="express"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'js-frameworks') {
+			total -= 100;
+			clickCount -= 1;
+			// enable express
+			$('#express').removeClass('strike');
+			$('[name="express"]').attr('disabled', false);
+		}
+
+		// js-libs
+		if (e.target.checked && e.target.name === 'js-libs') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+			// disable express
+			$('#node').addClass('strike');
+			$('[name="node"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'js-libs') {
+			total -= 100;
+			clickCount -= 1;
+			// enable express
+			$('#node').removeClass('strike');
+			$('[name="node"]').attr('disabled', false);
+		}
+
+		// express
+		if (e.target.checked && e.target.name === 'express') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+			// disable express
+			$('#js-frameworks').addClass('strike');
+			$('[name="js-frameworks"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'express') {
+			total -= 100;
+			clickCount -= 1;
+			// enable express
+			$('#js-frameworks').removeClass('strike');
+			$('[name="js-frameworks"]').attr('disabled', false);
+		}
+
+		// node
+		if (e.target.checked && e.target.name === 'node') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+			// disable express
+			$('#js-libs').addClass('strike');
+			$('[name="js-libs"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'node') {
+			total -= 100;
+			clickCount -= 1;
+			// enable express
+			$('#js-libs').removeClass('strike');
+			$('[name="js-libs"]').attr('disabled', false);
+		}
+
+		// build-tools
+		if (e.target.checked && e.target.name === 'build-tools') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'build-tools') {
+			total -= 100;
+			clickCount -= 1;
+		}
+
+		// npm
+		if (e.target.checked && e.target.name === 'npm') {
+			total += 100;
+			clickCount += 1;
+			// disable all
+			$('#all').addClass('strike');
+			$('[name="all"]').attr('disabled', true);
+		} else if (!e.target.checked && e.target.name === 'npm') {
+			total -= 100;
+			clickCount -= 1;
+		}
+
+		if (clickCount === 0) {
+			$('#all').removeClass('strike');
+			$('[name="all"]').attr('disabled', false);
+		}
+
 		totalHTML.text('Total: $' + total);
 		$('.activities').append(totalHTML);
 	})
