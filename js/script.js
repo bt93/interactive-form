@@ -51,3 +51,14 @@ function tShirtInfo() {
 }
 
 tShirtInfo();
+
+function activityRegister() {
+	const all = $('input[name="all"]');
+
+	let total = 0; 
+	all.click(function() {
+		console.log(all.prop('checked'));
+	});
+}
+
+activityRegister();
