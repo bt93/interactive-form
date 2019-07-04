@@ -6,6 +6,20 @@ $(document).ready(function() {
 	$('#other-title').hide();
 })
 
+// Displays the `other title` text feild if other is selected
+function otherJobTitle() {
+	const title = $('#title');
+	title.change(function() {
+		if (title.val() === 'other') {
+			$('#other-title').show();
+		} else {
+			$('#other-title').hide();
+		}
+	});
+}
+
+otherJobTitle();
+
 /*
  * Takes the design select menu and changes the color menu
  * based on which is chosen and displays only the
