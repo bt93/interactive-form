@@ -33,14 +33,14 @@ function tShirtInfo() {
 		const designVal = design.val()
 		if (designVal === 'js puns') {
 			colorChildren.show();
+			color[0].selectedIndex = 0;
 			for (let i = 3; i < colorChildren.length; i++) {
-				color[0].selectedIndex = 0;
 				colorChildren.eq(i).hide();
 			}
 		} else if (designVal === 'heart js') {
 			colorChildren.show();
+			color[0].selectedIndex = 3;
 			for (let i = 0; i < 3; i++) {
-				color[0].selectedIndex = 3;
 				colorChildren.eq(i).hide();
 			}
 		} else {
