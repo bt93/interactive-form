@@ -4,6 +4,10 @@ $(document).ready(function() {
 	$('#name').focus();
 	// Hides the `Other title` text field on page load
 	$('#other-title').hide();
+	// Hides paypal payment info
+	$('#paypal').hide();
+	// Hides bitcoin payment info
+	$('#bitcoin').hide();
 })
 
 // Displays the `other title` text feild if other is selected
@@ -187,3 +191,23 @@ function activityRegister() {
 
 activityRegister();
 
+function paymentInfo() {
+	const paymentSelect = $('#payment');
+	paymentSelect.change(function() {
+		if (paymentSelect.val() === 'credit card') {
+			$('#credit-card').show();
+			$('#paypal').hide();
+			$('#bitcoin').hide();
+		} else if (paymentSelect.val() === 'paypal') {
+			$('#credit-card').hide();
+			$('#paypal').show();
+			$('#bitcoin').hide();
+		} else if (paymentSelect.val() === 'bitcoin') {
+			$('#credit-card').hide();
+			$('#paypal').hide();
+			$('#bitcoin').show();
+		}
+	});
+}
+
+paymentInfo();
