@@ -4,6 +4,8 @@ $(document).ready(function() {
 	$('#name').focus();
 	// Hides the `Other title` text field on page load
 	$('#other-title').hide();
+	// Hides color selector on load
+	$('#colors-js-puns').hide();
 	// Hides paypal payment info
 	$('#paypal').hide();
 	// Hides bitcoin payment info
@@ -38,12 +40,9 @@ function tShirtInfo() {
 	const color = $('#color');
 	const colorChildren = color.children();
 
-	for (let i = 3; i < colorChildren.length; i++) {
-				colorChildren.eq(i).hide();
-			}
-
 	design.change(function() {
 		const designVal = design.val()
+		$('#colors-js-puns').show();
 		if (designVal === 'js puns') {
 			colorChildren.show();
 			color[0].selectedIndex = 0;
@@ -166,10 +165,16 @@ function paymentInfo() {
 			$('#credit-card').hide();
 			$('#paypal').show();
 			$('#bitcoin').hide();
+			$('#cc-num').removeClass('alert');
+			$('#zip').removeClass('alert');
+			$('#cvv').removeClass('alert');
 		} else if (paymentSelect.val() === 'bitcoin') {
 			$('#credit-card').hide();
 			$('#paypal').hide();
 			$('#bitcoin').show();
+			$('#cc-num').removeClass('alert');
+			$('#zip').removeClass('alert');
+			$('#cvv').removeClass('alert');
 		}
 	});
 }
