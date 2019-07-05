@@ -168,6 +168,11 @@ option {
 	text-decoration: line-through;
 }
 
+.alert,
+.alert:focus {
+	border: 2px solid #f50202;
+}
+
 /* ================================= 
   Media Queries
 ==================================== */
