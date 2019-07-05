@@ -33,6 +33,11 @@ function tShirtInfo() {
 	const design = $('#design');
 	const color = $('#color');
 	const colorChildren = color.children();
+
+	for (let i = 3; i < colorChildren.length; i++) {
+				colorChildren.eq(i).hide();
+			}
+			
 	design.change(function() {
 		const designVal = design.val()
 		if (designVal === 'js puns') {
@@ -149,6 +154,8 @@ function activityRegister() {
 
 activityRegister();
 
+
+// Takes the payment selection and shows the corresponding payment option
 function paymentInfo() {
 	const paymentSelect = $('#payment');
 	paymentSelect.change(function() {
