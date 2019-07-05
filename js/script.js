@@ -8,6 +8,12 @@ $(document).ready(function() {
 	$('#paypal').hide();
 	// Hides bitcoin payment info
 	$('#bitcoin').hide();
+
+	// Calls all functions when page is loaded
+	otherJobTitle();
+	tShirtInfo();
+	activityRegister();
+	paymentInfo();
 })
 
 // Displays the `other title` text feild if other is selected
@@ -22,8 +28,6 @@ function otherJobTitle() {
 	});
 }
 
-otherJobTitle();
-
 /*
  * Takes the design select menu and changes the color menu
  * based on which is chosen and displays only the
@@ -37,7 +41,7 @@ function tShirtInfo() {
 	for (let i = 3; i < colorChildren.length; i++) {
 				colorChildren.eq(i).hide();
 			}
-			
+
 	design.change(function() {
 		const designVal = design.val()
 		if (designVal === 'js puns') {
@@ -58,8 +62,6 @@ function tShirtInfo() {
 		}
 	});
 }
-
-tShirtInfo();
 
 /*
  * when activity options are clicked:
@@ -152,9 +154,6 @@ function activityRegister() {
 	})
 }
 
-activityRegister();
-
-
 // Takes the payment selection and shows the corresponding payment option
 function paymentInfo() {
 	const paymentSelect = $('#payment');
@@ -174,5 +173,3 @@ function paymentInfo() {
 		}
 	});
 }
-
-paymentInfo();
