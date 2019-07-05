@@ -6,6 +6,8 @@ function formValidate() {
 		e.preventDefault();
 
 		const email = /[a-zA-Z0-9._+-]+\@[a-zA-Z0-9]+\.[a-z]{2,3}/;
+		const activities = $('.activities').children().children();
+		let checkedActivities = 0;
 
 		if ($('#name').val() === '') {
 			$('#name').addClass('alert');
@@ -19,6 +21,18 @@ function formValidate() {
 			$('#mail').addClass('alert');
 		} else {
 			$('#mail').removeClass('alert');
+		}
+
+		for (let i = 0; i < activities.length; i++) {
+			if (activities[i].checked) {
+				checkedActivities++;
+			}
+		}
+		
+		if (checkedActivities === 0) {
+			$('.activities').addClass('alert');
+		} else {
+			$('.activities').removeClass('alert');
 		}
 	})
 }
