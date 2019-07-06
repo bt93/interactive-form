@@ -168,6 +168,10 @@ function paymentInfo() {
 			$('#cc-num').removeClass('alert');
 			$('#zip').removeClass('alert');
 			$('#cvv').removeClass('alert');
+			$('.noNum-Alert').remove();
+			$('.invalidNum-Alert').remove();
+			$('.zipAlert').remove();
+			$('.cvvAlert').remove();
 		} else if (paymentSelect.val() === 'bitcoin') {
 			$('#credit-card').hide();
 			$('#paypal').hide();
@@ -175,6 +179,10 @@ function paymentInfo() {
 			$('#cc-num').removeClass('alert');
 			$('#zip').removeClass('alert');
 			$('#cvv').removeClass('alert');
+			$('.noNum-Alert').remove();
+			$('.invalidNum-Alert').remove();
+			$('.zipAlert').remove();
+			$('.cvvAlert').remove();
 		}
 	});
 }
