@@ -3,7 +3,6 @@
 // Validation for all required feilds on submit.
 function formValidate() {
 	$('form').submit(function(e) {
-		e.preventDefault();
 
 		const email = /[a-zA-Z0-9._+-]+\@[a-zA-Z0-9]+\.[a-z]{2,3}/;
 		const creditCard = /^\d{13,16}$/;
@@ -14,6 +13,7 @@ function formValidate() {
 
 		// Name Validation
 		if ($('#name').val() === '') {
+			e.preventDefault();
 			$('#name').addClass('alert');
 			if (!$('.nameAlert').length) {
 				$('<p class="nameAlert">Name is required</p>').insertBefore($('#name'));
@@ -25,6 +25,7 @@ function formValidate() {
 
 		// Email validation
 		if ($('#mail').val() === '') {
+			e.preventDefault();
 			$('#mail').addClass('alert');
 			$('.invalidAlert').remove();
 			if (!$('.mailAlert').length) {
@@ -50,6 +51,7 @@ function formValidate() {
 		}
 		
 		if (checkedActivities === 0) {
+			e.preventDefault();
 			$('.activities').addClass('alert');
 			$('.activitiesAlert').remove();
 			if (!$('activitiesAlert').length) {
@@ -64,12 +66,14 @@ function formValidate() {
 		if ($('#credit-card')[0].style.display !== 'none') {
 			// Number validation
 			if ($('#cc-num').val() === '') {
+				e.preventDefault();
 				$('#cc-num').addClass('alert');
 				$('.invalidNum-Alert').remove();
 				if (!$('.noNum-Alert').length) {
 				$('<p class="noNum-Alert">Please type a Credit Card number</p>').insertAfter($('#cc-num'));
 				}
 			} else if (!creditCard.test($('#cc-num').val())) {
+				e.preventDefault();
 				$('#cc-num').addClass('alert');
 				$('.noNum-Alert').remove();
 				if (!$('.invalidNum-Alert').length) {
@@ -83,6 +87,7 @@ function formValidate() {
 
 			// Zipcode validation 
 			if ($('#zip').val() === '' || !zipCode.test($('#zip').val())) {
+				e.preventDefault();
 				$('#zip').addClass('alert');
 				if (!$('.zipAlert').length) {
 				$('<p class="zipAlert">Zipcode must be 5 digits</p>').insertAfter($('#zip'));
@@ -94,6 +99,7 @@ function formValidate() {
 
 			// CVV validation
 			if ($('#cvv').val() === '' || !cvv.test($('#cvv').val())) {
+				e.preventDefault();
 				$('#cvv').addClass('alert');
 				if (!$('.cvvAlert').length) {
 				$('<p class="cvvAlert">CVV must be 3 digits</p>').insertAfter($('#cvv'));
