@@ -10,7 +10,6 @@ $(document).ready(function() {
 	$('#paypal').hide();
 	// Hides bitcoin payment info
 	$('#bitcoin').hide();
-
 	// Calls all functions when page is loaded
 	otherJobTitle();
 	tShirtInfo();
@@ -41,23 +40,24 @@ function tShirtInfo() {
 	const colorChildren = color.children();
 
 	design.change(function() {
+		$('#delete').remove();
 		const designVal = design.val()
 		$('#colors-js-puns').show();
 		if (designVal === 'js puns') {
 			colorChildren.show();
 			color[0].selectedIndex = 0;
-			for (let i = 3; i < colorChildren.length; i++) {
+			for (let i = 4; i < colorChildren.length; i++) {
 				colorChildren.eq(i).hide();
 			}
 		} else if (designVal === 'heart js') {
 			colorChildren.show();
 			color[0].selectedIndex = 3;
-			for (let i = 0; i < 3; i++) {
+			for (let i = 0; i < 4; i++) {
 				colorChildren.eq(i).hide();
 			}
 		} else {
 			colorChildren.show();
-			color[0].selectedIndex = 0;
+			color[0].selectedIndex = 1;
 		}
 	});
 }
